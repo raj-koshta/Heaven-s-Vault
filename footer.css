@@ -1,0 +1,91 @@
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 40px 0 20px;
+}
+
+footer h4,
+footer h2 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+footer a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+footer ul {
+    padding: 0;
+    list-style: none;
+}
+
+footer ul li {
+    margin-bottom: 8px;
+}
+
+footer .fa {
+    width: 20px;
+    text-align: center;
+}
+
+footer hr {
+    border-color: #333;
+    margin: 30px 0 20px;
+}
+
+footer .social-icons {
+    padding-left: 0;
+    list-style: none;
+    margin: 0;
+}
+
+footer .social-icons li {
+    margin-bottom: 8px;
+}
+
+/* Show icons in a row above 768px */
+@media (min-width: 768px) {
+    footer .social-icons {
+        display: flex;
+        gap: 12px;
+    }
+
+    footer .social-icons li {
+        margin-bottom: 0;
+    }
+
+    footer .social-icons span {
+        display: none;
+        /* hide text next to icons on desktop */
+    }
+}
+
+@media (max-width: 767px) {
+    footer .footer-logo {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    footer .footer-logo h2 {
+        font-size: 24px;
+    }
+
+    footer .footer-col {
+        text-align: left;
+    }
+
+    footer .social-icons li {
+        display: flex;
+        align-items: center;
+    }
+
+    footer .social-icons span {
+        margin-left: 8px;
+    }
+}

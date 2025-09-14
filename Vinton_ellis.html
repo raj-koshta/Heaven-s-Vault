@@ -1,0 +1,2178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Heaven's Vault</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap 3 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Jost Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Adamina&family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Owl Carousel 2 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
+    <script defer src="header.js"></script>
+    <style>
+        body {
+            font-family: 'Jost', sans-serif;
+            margin: 0;
+        }
+    </style>
+
+    <!-- ---------------------------------- top carousel ------------------------------------ -->
+    <style>
+        .carousel {
+            margin-bottom: 0;
+        }
+
+        .carousel .item {
+            height: 600px;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .carousel-inner>.item {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .carousel-inner>.active {
+            position: relative;
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .carousel-indicators {
+            bottom: 20px;
+        }
+
+        .carousel-indicators li {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #fff;
+            border: 2px solid transparent;
+        }
+
+        .carousel-indicators .active {
+            background-color: transparent;
+            border-color: #fff;
+            width: 12px;
+            height: 12px;
+            margin: 1px;
+        }
+
+        /* Hide arrows */
+        .carousel-control.left,
+        .carousel-control.right {
+            display: none;
+        }
+
+
+        /* Medium devices (tablets, ≥768px and <992px) */
+        @media (max-width: 991px) {
+            .carousel .item {
+                height: 450px;
+            }
+        }
+
+        /* Small devices (phones, ≥576px and <768px) */
+        @media (max-width: 767px) {
+            .carousel .item {
+                height: 300px;
+            }
+        }
+
+        /* Extra small devices (phones, <576px) */
+        @media (max-width: 575px) {
+            .carousel .item {
+                height: 220px;
+            }
+        }
+    </style>
+
+    <!-- --------------------------------------- Card scroll --------------------------------------- -->
+    <style>
+        .custom-slider {
+            padding: 30px 15px;
+        }
+
+        .owl-carousel .item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            background: #000;
+        }
+
+        .owl-carousel .item img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .overlay h4 {
+            font-size: 20px;
+            width: 75%;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+
+        .overlay a {
+            color: #fff;
+            text-decoration: underline;
+            margin-top: 10px;
+        }
+
+        /* Remove dots */
+        .owl-dots {
+            display: none !important;
+        }
+
+        /* Responsive text size */
+        @media (max-width: 767px) {
+            .overlay h4 {
+                font-size: 16px;
+            }
+
+            .overlay a {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .owl-carousel .item img {
+                height: 200px;
+            }
+        }
+    </style>
+
+    <!-- ----------------------------------------- popular category ---------------------------------------- -->
+    <style>
+        .category-section {
+            padding: 10px 0 40px 0px;
+            text-align: center;
+            background: #fff;
+        }
+
+        .category-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+
+        .popular-carousel .item {
+            background-color: transparent;
+        }
+
+        .category-item {
+            text-align: center;
+            padding: 10px;
+            opacity: 0;
+        }
+
+        .category-item.visible {
+            opacity: 1;
+            animation: slideInLeft 0.6s ease forwards;
+        }
+
+        .circle-wrapper {
+            width: 100%;
+            max-width: 150px;
+            height: 150px;
+            margin: 0 auto;
+            border-radius: 50%;
+            background-color: #f9f9f9;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .circle-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            transition: opacity 0.4s ease;
+        }
+
+        .circle-wrapper img.hover-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+        }
+
+        .circle-wrapper:hover img.default-img {
+            opacity: 0;
+        }
+
+        .circle-wrapper:hover img.hover-img {
+            opacity: 1;
+        }
+
+        .category-label {
+            margin-top: 12px;
+            font-weight: 500;
+            font-size: 16px;
+            white-space: normal;
+        }
+
+        @media (max-width: 768px) {
+            .circle-wrapper {
+                max-width: 110px;
+                height: 110px;
+            }
+
+            .category-label {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .circle-wrapper {
+                max-width: 90px;
+                height: 90px;
+            }
+
+            .category-label {
+                font-size: 13px;
+            }
+        }
+
+        @keyframes slideInLeft {
+            0% {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* ---------------------- added ---------------------------- */
+        /* Prevent the margin-right: 20px inline override */
+        .popular-carousel .owl-item {
+            margin-right: 30px !important;
+            margin-left: 10px !important;
+        }
+
+        /* Optional: remove Owl's width calculation if it's breaking layout */
+        .popular-carousel .owl-item {
+            width: auto !important;
+            flex: 0 0 auto;
+        }
+
+        /* Ensure carousel remains in one horizontal line */
+        .popular-carousel {
+            display: flex;
+            flex-wrap: nowrap;
+        }
+
+        .popular-carousel .owl-stage {
+            display: flex !important;
+        }
+
+        .popular-carousel .owl-item>div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .custom-carousel-wrapper .owl-item {
+            margin-right: 30px !important;
+            margin-left: 10px !important;
+            width: auto !important;
+            flex: 0 0 auto;
+        }
+
+        .custom-carousel-wrapper .owl-carousel {
+            display: flex;
+            flex-wrap: nowrap;
+        }
+
+        .custom-carousel-wrapper .owl-stage {
+            display: flex !important;
+        }
+    </style>
+
+    <!-- ----------------------------------- Limited time deal; --------------------------- -->
+    <style>
+        .limited-deals-carousel {
+            padding: 0px 15px 40px 15px;
+        }
+
+        .limited-deals-carousel .slide-item {
+            height: 600px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .limited-deals-carousel .shirt-images {
+            position: absolute;
+            right: 5%;
+            bottom: 10%;
+            display: flex;
+            gap: 30px;
+            align-items: flex-end;
+        }
+
+        .limited-deals-carousel .shirt {
+            width: 180px;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Bootstrap Carousel overrides */
+        .carousel-inner>.item {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .carousel-inner>.active {
+            position: relative;
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .carousel-indicators.ltd {
+            bottom: 40px;
+        }
+
+        .carousel-indicators li {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #fff;
+            border: 2px solid transparent;
+        }
+
+        .carousel-indicators .active {
+            background-color: transparent;
+            border-color: #000;
+        }
+
+        @media (max-width: 991px) {
+            .limited-deals-carousel .slide-item {
+                height: 400px;
+            }
+
+            .limited-deals-carousel .shirt {
+                width: 140px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .limited-deals-carousel .slide-item {
+                height: 300px;
+            }
+
+            .limited-deals-carousel .shirt {
+                width: 110px;
+            }
+
+            .limited-deals-carousel .shirt-images {
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .limited-deals-carousel .slide-item {
+                height: 220px;
+            }
+
+            .limited-deals-carousel .shirt {
+                width: 90px;
+            }
+        }
+    </style>
+
+    <!-- -------------------------------------------- Explore our shop ------------------------------------------- -->
+    <style>
+        .product-grid {
+            position: relative;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            overflow: hidden;
+            padding: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .product-grid .image-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-grid img {
+            width: 100%;
+            height: auto;
+        }
+
+        .product-grid .overlay-icons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: all 0.3s ease-in-out;
+            z-index: 1;
+        }
+
+        .product-grid:hover .overlay-icons {
+            opacity: 1;
+        }
+
+        .product-grid .wishlist {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 18px;
+            color: #ff4081;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease-in-out;
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        .product-grid:hover .wishlist {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .overlay-icons .btn {
+            margin: 5px 0;
+            width: 160px;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .overlay-icons .btn:hover span {
+            display: none;
+        }
+
+        .overlay-icons .btn:hover:before {
+            content: attr(data-hover);
+            display: inline;
+        }
+
+        .product-grid .title {
+            font-size: 14px;
+            margin-top: 10px;
+            font-weight: 600;
+            text-align: start;
+            padding: 0px 10px;
+        }
+
+        .product-grid .price {
+            font-size: 13px;
+            color: #666;
+            text-align: start;
+            padding: 0px 10px;
+        }
+
+        .rating {
+            color: #ffc107;
+            margin-top: 10px;
+            text-align: start;
+            padding: 0px 10px;
+        }
+
+        .footer-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .footer-row nav {
+            flex-grow: 1;
+        }
+
+        .pagination {
+            margin: 0;
+        }
+
+        .pagination>li>a,
+        .pagination>li>span {
+            border-radius: 3px !important;
+            margin: 0 2px;
+        }
+
+        .btn-dark {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+
+
+        .header-flex-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: nowrap;
+            overflow: hidden;
+            margin-bottom: 30px;
+            gap: 15px;
+            padding: 20px 0px;
+        }
+
+        .header-title {
+            white-space: nowrap;
+            font-size: 28px;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-right: 15px;
+        }
+
+        .filter-scroll {
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            display: flex;
+            gap: 10px;
+            padding-bottom: 4px;
+            flex-grow: 1;
+        }
+
+        .filter-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter-scroll>li>a {
+            display: inline-block;
+            padding: 8px 18px;
+            background: transparent;
+            border-radius: 20px;
+            color: #333;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .nav-tabs>li.active>a,
+        .nav-tabs>li.active>a:focus,
+        .nav-tabs>li.active>a:hover,
+        .filter-scroll>li.active>a,
+        .filter-scroll>li>a:hover {
+            background-color: #222;
+            color: #fff !important;
+            border-color: #222;
+        }
+
+        .pagination>.active>a{
+            background-color: #000;
+            color: #fff !important;
+        }
+
+        .pagination>li>a, .pagination>li>span{
+            color: #000 !important;
+            
+        }
+
+        @media (min-width: 992px) {
+            .footer-row {
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .footer-row nav {
+                text-align: center;
+            }
+
+            .footer-row .pagination {
+                display: inline-block;
+            }
+
+            .footer-row .btn-dark {
+                margin-left: auto;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .footer-row {
+                justify-content: space-between;
+            }
+
+            .footer-row nav {
+                text-align: left;
+                width: auto;
+            }
+
+            .footer-row .btn-dark {
+                margin-left: auto;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .header-flex-wrap {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header-title {
+                margin-bottom: 10px;
+            }
+
+            .filter-scroll {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 510px) {
+            .footer-row nav {
+                text-align: center;
+            }
+
+            .footer-row .btn-dark {
+                margin: 0px auto;
+            }
+        }
+    </style>
+
+    <!-- ------------------------------------------  deals -------------------------------------- -->
+    <style>
+        .card-container {
+            margin: 50px auto;
+            padding: 0px 100px;
+        }
+
+        .custom-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+            display: flex;
+            height: 250px;
+        }
+
+        .card-text {
+            padding: 25px;
+            width: 50%;
+        }
+
+        .card-text small {
+            color: #333;
+            display: block;
+            font-size: 13px;
+        }
+
+        .card-text h4 {
+            font-size: 24px;
+            margin: 10px 0;
+            font-weight: 500;
+        }
+
+        .card-text a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .card-img {
+            width: 50%;
+            height: 100%;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @media (min-width: 992px) {
+            .card-container {
+                padding: 0px 100px;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 992px) {
+            .card-container {
+                padding: 0px 40px;
+            }
+        }
+
+        @media (max-width: 767px) {
+
+            .card-container {
+                padding: 0px 20px;
+            }
+
+            .desktop-view {
+                display: none;
+            }
+
+            .mobile-view {
+                display: block;
+            }
+
+            .scroll-wrapper {
+                overflow-x: scroll;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            .scroll-wrapper::-webkit-scrollbar {
+                display: none;
+            }
+
+            .scroll-slide {
+                display: inline-block;
+                width: 100%;
+                max-width: 95%;
+                vertical-align: top;
+                margin-right: 10px;
+                white-space: normal;
+            }
+
+            .scroll-slide .custom-card {
+                display: flex;
+                height: 250px;
+                margin-bottom: 15px;
+            }
+
+            .scroll-slide .card-text,
+            .scroll-slide .card-img {
+                width: 50%;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .mobile-view {
+                display: none;
+            }
+        }
+    </style>
+
+    <!-- ------------------------------------- Testimonial section ----------------------------------------------- -->
+    <style>
+        .testimonial-section {
+            position: relative;
+            color: #fff;
+        }
+
+        .testimonial-track {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 30px;
+            padding: 10px 40px;
+        }
+
+        .testimonial-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .testimonial-card {
+            background: #111;
+            border-radius: 12px;
+            flex: 0 0 48%;
+            min-height: 240px;
+            max-height: 300px;
+            display: flex;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
+        }
+
+        .testimonial-image {
+            width: 40%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-content {
+            padding: 15px 20px;
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-y: auto;
+            max-height: 300px;
+        }
+
+        .testimonial-stars {
+            color: #ffc107;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .testimonial-text {
+            font-size: 13px;
+            line-height: 1.5;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .testimonial-name {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .testimonial-role {
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        .slider-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            pointer-events: none;
+        }
+
+        .slider-btn {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.12);
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: all;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            padding: 0;
+            text-align: center;
+            line-height: 40px;
+            transition: background 0.3s ease;
+        }
+
+        .slider-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .slider-btn.left {
+            left: 10px;
+        }
+
+        .slider-btn.right {
+            right: 10px;
+        }
+
+
+        /* Responsive Fix for Small Devices */
+        @media (max-width: 750px) {
+            .testimonial-card {
+                flex: 0 0 100%;
+                min-height: 220px;
+                max-height: 320px;
+            }
+
+            .testimonial-image {
+                width: 40%;
+                height: 100%;
+            }
+
+            .testimonial-content {
+                width: 60%;
+                max-height: 100%;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .testimonial-card {
+                min-height: 200px;
+                max-height: 300px;
+            }
+
+            .testimonial-content {
+                padding: 12px 14px;
+            }
+
+            .testimonial-text {
+                font-size: 12px;
+            }
+
+            .testimonial-stars {
+                font-size: 14px;
+            }
+        }
+    </style>
+
+    <!-- ------------------------------------------- videos ------------------------------------- -->
+    <style>
+        .gallery-title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .video-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            height: 230px;
+        }
+
+        .video-card video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .play-icon {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .video-name {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 575px) {
+            .col-xs-6 {
+                width: 50%;
+                float: left;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
+    </style>
+
+    <!-- ---------------------------------------- meet section ----------------------------------- -->
+    <style>
+        .meet-section {
+            background: #000;
+            color: #fff;
+            padding: 40px 20px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .meet-flex {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+        }
+
+        .meet-text {
+            padding: 20px;
+        }
+
+        .meet-text h2 {
+            font-size: 32px;
+            font-weight: normal;
+            margin-bottom: 20px;
+        }
+
+        .meet-text ul {
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+
+        .meet-text ul li {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .meet-btn {
+            background: #fff;
+            color: #000;
+            padding: 12px 24px;
+            font-weight: bold;
+            border-radius: 10px;
+            border: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .meet-btn .arrow {
+            display: inline-block;
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .meet-btn:hover .arrow {
+            transform: translateX(5px);
+        }
+
+        .meet-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 0 0 12px 12px;
+            object-fit: cover;
+        }
+
+        /* Responsive layout: stack image on top */
+        @media (max-width: 575px) {
+            .meet-flex {
+                flex-direction: column;
+            }
+
+            .meet-text {
+                text-align: center;
+                padding: 15px;
+            }
+
+            .meet-text h2 {
+                font-size: 20px;
+            }
+
+            .meet-text ul li {
+                font-size: 14px;
+            }
+
+            .meet-btn {
+                width: 100%;
+                font-size: 16px;
+            }
+
+            .meet-image img {
+                border-radius: 12px 12px 0 0;
+            }
+        }
+    </style>
+
+    <!-- ----------------------------------------- feature ----------------------------------------------------- -->
+    <style>
+        .quote-section {
+            max-width: 1000px;
+            margin: 0 auto 50px;
+            text-align: left;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .quote-section svg {
+            width: 40px;
+            height: 40px;
+            fill: #ccc;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .quote-text {
+            font-size: 20px;
+            color: #000;
+            margin-top: 10px;
+            padding-left: 50px;
+            line-height: 1.6;
+        }
+
+        .quote-author {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 18px;
+            padding-left: 50px;
+        }
+
+        .features-section {
+            border-top: 1px solid #eee;
+            padding-top: 40px;
+        }
+
+        .feature {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .feature-icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .feature h4 {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .feature p {
+            margin: 0;
+            color: #555;
+        }
+
+        @media (min-width: 768px) {
+            .feature-divider {
+                border-left: 1px solid #ddd;
+                height: 80px;
+                margin: auto;
+            }
+
+        }
+
+        @media (max-width: 576px) {
+            .quote-text {
+                font-size: 12px;
+                padding-right: 50px;
+            }
+        }
+
+        @media (min-width:576px) and (max-width: 768px) {
+            .quote-text {
+                font-size: 15px;
+                padding-right: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container-fluid ph-5">
+
+            <!-- Desktop ≥768px -->
+            <div class="top-layout hidden-xs">
+                <div class="row">
+                    <div class="col-sm-6 text-left">
+                        <div class="custom-select language-select">
+                            <select>
+                                <option>English</option>
+                            </select>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="custom-select currency-select">
+                            <select>
+                                <option>USD ($)</option>
+                            </select>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <span class="sale-text">Summer Sale 15% off! <a href="#">Shop Now!</a></span>
+                    </div>
+                    <div class="col-sm-6 top-links">
+                        <a href="#">Contact</a>
+                        <a href="#">About</a>
+                        <a href="#">Gift Cards</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile <576px -->
+            <div class="top-layout-xs visible-xs">
+                <div class="row text-center" style="display: flex; align-items: center;">
+                    <div class="col-xs-3 text-left" style="display: flex; align-items: center;">
+                        <div class="custom-select language-select" style="margin: 0 auto;">
+                            <select>
+                                <option>English</option>
+                            </select>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 sale-text text-center"
+                        style="display: flex; justify-content: center; align-items: center;">
+                        <small>Summer Sale 15% off! <a href="#">Shop Now!</a></small>
+                    </div>
+                    <div class="col-xs-3 text-right"
+                        style="display: flex; justify-content: flex-end; align-items: center;">
+                        <div class="custom-select currency-select" style="margin: 0 auto;">
+                            <select>
+                                <option>USD</option>
+                            </select>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Sticky Header Starts -->
+    <header class="sticky-header">
+
+        <!-- Main Navbar -->
+        <div class="main-navbar container-fluid ph-5">
+            <!-- Desktop View -->
+            <div class="row hidden-xs">
+                <div class="col-sm-3">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search Products">
+                        <i class="bi bi-search"></i>
+                    </div>
+                </div>
+                <div class="col-sm-5 logo">Heaven’s Vault</div>
+                <div class="col-sm-4 icons-wrap">
+                    <i class="bi bi-person"></i>
+                    <i class="bi bi-heart"><span class="badge">0</span></i>
+                    <i class="bi bi-cart"><span class="badge">0</span></i>
+                </div>
+            </div>
+
+            <!-- Mobile View -->
+            <div class="mobile-header">
+                <i class="bi bi-list"></i>
+                <div class="logo">Heaven’s Vault</div>
+                <div class="icons-wrap">
+                    <i class="bi bi-search" id="mobileSearchIcon"></i>
+                    <i class="bi bi-heart"><span class="badge">0</span></i>
+                    <i class="bi bi-cart"><span class="badge">0</span></i>
+                </div>
+            </div>
+
+            <!-- OFFCANVAS MENU -->
+            <div class="offcanvas-menu" id="mobileSidebar">
+                <div class="offcanvas-header">
+                    <span class="menu-title">Menu</span>
+                    <i class="bi bi-x" id="closeSidebar"></i>
+                </div>
+
+                <ul class="offcanvas-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+
+                    <li class="has-dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            Categories <i class="bi bi-chevron-down dropdown-arrow"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Men</a></li>
+                            <li><a href="#">Women</a></li>
+                            <li><a href="#">Accessories</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Backdrop -->
+            <div class="offcanvas-backdrop" id="sidebarBackdrop"></div>
+
+
+
+        </div>
+
+        <!-- Mega Search Bar (Toggles on Search Icon Click) -->
+        <div class="mega-search" id="megaSearch">
+            <input type="text" placeholder="Search for products...">
+        </div>
+
+        <!-- Sub Navbar -->
+        <div class="sub-navbar container-fluid ph-5 hidden-xs">
+            <div class="row">
+                <div class="col-sm-2 browse-categories">
+                    <select>
+                        <option>Browse Categories</option>
+                    </select>
+                </div>
+                <div class="col-sm-7 text-center nav-center">
+                    <a href="#">Home</a>
+                    <a href="#">Shop Now</a>
+                    <a href="#">New Arrivals</a>
+                    <a href="#">Sale Items</a>
+                    <a href="#">Testimonials</a>
+                </div>
+                <div class="col-sm-3 support-link">
+                    <a href="#" class="customer-support"><i class="bi bi-headset"></i>24*7 Customer Support</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ---------------------------------- top carousel ------------------------------------ -->
+    <section id="customCarousel" class="carousel slide" data-ride="carousel" data-interval="4000"
+        style="padding: 20px;">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#customCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#customCarousel" data-slide-to="1"></li>
+            <li data-target="#customCarousel" data-slide-to="2"></li>
+            <li data-target="#customCarousel" data-slide-to="3"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active" style="background-image: url('./images/cs-1.png');"></div>
+            <div class="item" style="background-image: url('./images/cs-2.avif');"></div>
+            <div class="item" style="background-image: url('./images/cs-3.jpg');"></div>
+            <div class="item" style="background-image: url('./images/cs-4.jpg');"></div>
+        </div>
+    </section>
+
+    <!-- --------------------------------------- Card scroll --------------------------------------- -->
+    <section class="container-fluid custom-slider">
+        <div class="custom-slider-carousel owl-carousel owl-theme">
+            <div class="item">
+                <img src="./images/s-1.png" alt="Card 1">
+                <div class="overlay">
+                    <h4>Start Fixing Without Breaking The Budget with Premium Brands At The Best Prices Shop Now</h4>
+                    <a href="#">Shop Now</a>
+                </div>
+            </div>
+            <div class="item">
+                <img src="./images/s-2.png" alt="Card 2">
+                <div class="overlay">
+                    <h4>Tis The Season for Christmas Love & Savings… Shop Affordable For Legendary Gifts Today</h4>
+                    <a href="#">Shop Now</a>
+                </div>
+            </div>
+            <div class="item">
+                <img src="./images/s-3.png" alt="Card 3">
+                <div class="overlay">
+                    <h4>TakeOff w/ Highend Travel Products w/ Comfortable Price points</h4>
+                    <a href="#">Shop Now</a>
+                </div>
+            </div>
+            <div class="item">
+                <img src="./images/s-4.png" alt="Card 4">
+                <div class="overlay">
+                    <h4>It’s Officially Party & Costume Season… No matter How Naughty Or Nice You Can’t Beat These
+                        Prices…Halloween… Christmas…New Year…</h4>
+                    <a href="#">Get Ready For Heavens Vault Today!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------------------------------- Popular Categories Section -------------------------------------------- -->
+    <section class="container-fluid category-section" id="category-section">
+        <h2 class="category-title">Popular Categories</h2>
+
+        <div class="custom-carousel-wrapper">
+            <div class="popular-carousel owl-carousel owl-theme">
+                <!-- 7 Categories -->
+                <div class="item category-item">
+                    <div class="circle-wrapper"><img src="./images/pc-1.png" class="default-img"><img
+                            src="https://picsum.photos/200?random=22" class="hover-img"></div>
+                    <div class="category-label">Travel</div>
+                </div>
+                <div class="item category-item">
+                    <div class="circle-wrapper"><img src="https://picsum.photos/200?random=23" class="default-img"><img
+                            src="https://picsum.photos/200?random=24" class="hover-img"></div>
+                    <div class="category-label">Jewellery</div>
+                </div>
+                <div class="item category-item">
+                    <div class="circle-wrapper"><img src="https://picsum.photos/200?random=25" class="default-img"><img
+                            src="https://picsum.photos/200?random=26" class="hover-img"></div>
+                    <div class="category-label">Electronics</div>
+                </div>
+                <div class="item category-item">
+                    <div class="circle-wrapper"><img src="https://picsum.photos/200?random=27" class="default-img"><img
+                            src="https://picsum.photos/200?random=28" class="hover-img"></div>
+                    <div class="category-label">Furniture</div>
+                </div>
+                <div class="item category-item">
+                    <div class="circle-wrapper"><img src="https://picsum.photos/200?random=29" class="default-img"><img
+                            src="https://picsum.photos/200?random=30" class="hover-img"></div>
+                    <div class="category-label">Party</div>
+                </div>
+                <div class="item category-item">
+                    <div class="circle-wrapper"><img src="https://picsum.photos/200?random=31" class="default-img"><img
+                            src="https://picsum.photos/200?random=32" class="hover-img"></div>
+                    <div class="category-label">Fashion</div>
+                </div>
+                <div class="item category-item">
+                    <div class="circle-wrapper"><img src="https://picsum.photos/200?random=33" class="default-img"><img
+                            src="https://picsum.photos/200?random=34" class="hover-img"></div>
+                    <div class="category-label">Accessories</div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ------------------------- Limited Time Deal------------------------------------------------------ -->
+    <!-- =================== Limited Time Deals Carousel =================== -->
+    <section id="limitedDealsCarousel" class="carousel slide limited-deals-carousel" data-ride="carousel"
+        data-interval="5000">
+        <h2 class="text-center" style="font-weight: bold; margin-bottom: 60px;">Limited Time Deals</h2>
+
+        <!-- Indicators -->
+        <ol class="carousel-indicators ltd ">
+            <li data-target="#limitedDealsCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#limitedDealsCarousel" data-slide-to="1"></li>
+            <li data-target="#limitedDealsCarousel" data-slide-to="2"></li>
+            <li data-target="#limitedDealsCarousel" data-slide-to="3"></li>
+            <li data-target="#limitedDealsCarousel" data-slide-to="4"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <!-- Slide 1 -->
+            <div class="item active slide-item" style="background-image: url('./images/ltd-1.png');">
+                <div class="shirt-images">
+                    <img src="https://picsum.photos/id/1003/250/350" class="shirt">
+                    <img src="https://picsum.photos/id/1027/250/350" class="shirt">
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="item slide-item" style="background-image: url('https://picsum.photos/id/1015/1400/600');">
+                <div class="shirt-images">
+                    <img src="https://picsum.photos/id/1011/250/350" class="shirt">
+                    <img src="https://picsum.photos/id/1012/250/350" class="shirt">
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="item slide-item" style="background-image: url('./images/ltd-1.png');">
+                <div class="shirt-images">
+                    <img src="https://picsum.photos/id/1014/250/350" class="shirt">
+                    <img src="https://picsum.photos/id/1006/250/350" class="shirt">
+                </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="item slide-item" style="background-image: url('https://picsum.photos/id/1005/1400/600');">
+                <div class="shirt-images">
+                    <img src="https://picsum.photos/id/1021/250/350" class="shirt">
+                    <img src="https://picsum.photos/id/1022/250/350" class="shirt">
+                </div>
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="item slide-item" style="background-image: url('./images/ltd-1.png');">
+                <div class="shirt-images">
+                    <img src="https://picsum.photos/id/1033/250/350" class="shirt">
+                    <img src="https://picsum.photos/id/1035/250/350" class="shirt">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------------------------------- Explore our deals ----------------------------------------- -->
+    <section class="container">
+        <!-- Header with filters -->
+        <div class="header-flex-wrap">
+            <div class="header-title"><strong>Explore Our Stores</strong></div>
+            <ul class="nav nav-tabs filter-scroll" role="tablist">
+                <li role="presentation" class="active"><a href="#all" aria-controls="all" role="tab"
+                        data-toggle="tab">All</a>
+                </li>
+                <li role="presentation"><a href="#furniture" aria-controls="furniture" role="tab"
+                        data-toggle="tab">Furniture</a></li>
+                <li role="presentation"><a href="#sports" aria-controls="sports" role="tab" data-toggle="tab">Sports</a>
+                </li>
+                <li role="presentation"><a href="#swimsuit" aria-controls="swimsuit" role="tab"
+                        data-toggle="tab">Swimsuit &
+                        Lingerie</a></li>
+                <li role="presentation"><a href="#beauty" aria-controls="beauty" role="tab" data-toggle="tab">Cosmetics
+                        &
+                        Beauty</a></li>
+                <li role="presentation"><a href="#kitchen" aria-controls="kitchen" role="tab" data-toggle="tab">Kitchen
+                        &
+                        Household</a></li>
+            </ul>
+        </div>
+
+        <!-- Product Cards -->
+        <div class="row" id="product-container">
+            <!-- Example card -->
+            <div class="col-xs-6 col-sm-4 col-md-3 product-item" data-category="furniture">
+                <div class="product-grid">
+                    <div class="wishlist"><i class="glyphicon glyphicon-heart"></i></div>
+                    <div class="image-wrapper">
+                        <img src="./images/eos-1.png" alt="Product">
+                        <div class="overlay-icons">
+                            <button class="btn btn-default" data-hover="🔍 Quick View"><span>Quick View</span></button>
+                            <button class="btn btn-primary" data-hover="🛒 Quick Shop"><span>Quick Shop</span></button>
+                        </div>
+                    </div>
+                    <div class="rating"><i class="glyphicon glyphicon-star"></i><i
+                            class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i
+                            class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i></div>
+                    <div class="title">Analogue Resin Strap</div>
+                    <div class="price">$36.00</div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-3 product-item" data-category="furniture">
+                <div class="product-grid">
+                    <div class="wishlist"><i class="glyphicon glyphicon-heart"></i></div>
+                    <div class="image-wrapper">
+                        <img src="./images/eos-2.png" alt="Product">
+                        <div class="overlay-icons">
+                            <button class="btn btn-default" data-hover="🔍 Quick View"><span>Quick View</span></button>
+                            <button class="btn btn-primary" data-hover="🛒 Quick Shop"><span>Quick Shop</span></button>
+                        </div>
+                    </div>
+                    <div class="rating"><i class="glyphicon glyphicon-star"></i><i
+                            class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i
+                            class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i></div>
+                    <div class="title">Oversized Printed Sweatshirt</div>
+                    <div class="price">$30.00</div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-3 product-item" data-category="furniture">
+                <div class="product-grid">
+                    <div class="wishlist"><i class="glyphicon glyphicon-heart"></i></div>
+                    <div class="image-wrapper">
+                        <img src="./images/eos-3.png" alt="Product">
+                        <div class="overlay-icons">
+                            <button class="btn btn-default" data-hover="🔍 Quick View"><span>Quick View</span></button>
+                            <button class="btn btn-primary" data-hover="🛒 Quick Shop"><span>Quick Shop</span></button>
+                        </div>
+                    </div>
+                    <div class="rating"><i class="glyphicon glyphicon-star"></i><i
+                            class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i
+                            class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i></div>
+                    <div class="title">Oversized Printed Sweatshirt</div>
+                    <div class="price">$30.00</div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-3 product-item" data-category="furniture">
+                <div class="product-grid">
+                    <div class="wishlist"><i class="glyphicon glyphicon-heart"></i></div>
+                    <div class="image-wrapper">
+                        <img src="./images/eos-4.png" alt="Product">
+                        <div class="overlay-icons">
+                            <button class="btn btn-default" data-hover="🔍 Quick View"><span>Quick View</span></button>
+                            <button class="btn btn-primary" data-hover="🛒 Quick Shop"><span>Quick Shop</span></button>
+                        </div>
+                    </div>
+                    <div class="rating"><i class="glyphicon glyphicon-star"></i><i
+                            class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i
+                            class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i></div>
+                    <div class="title">Elegant Sofa</div>
+                    <div class="price">$36.00</div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-3 product-item" data-category="furniture">
+                <div class="product-grid">
+                    <div class="wishlist"><i class="glyphicon glyphicon-heart"></i></div>
+                    <div class="image-wrapper">
+                        <img src="./images/eos-5.png" alt="Product">
+                        <div class="overlay-icons">
+                            <button class="btn btn-default" data-hover="🔍 Quick View"><span>Quick View</span></button>
+                            <button class="btn btn-primary" data-hover="🛒 Quick Shop"><span>Quick Shop</span></button>
+                        </div>
+                    </div>
+                    <div class="rating"><i class="glyphicon glyphicon-star"></i><i
+                            class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i
+                            class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i></div>
+                    <div class="title">Elegant Sofa</div>
+                    <div class="price">$36.00</div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-3 product-item" data-category="furniture">
+                <div class="product-grid">
+                    <div class="wishlist"><i class="glyphicon glyphicon-heart"></i></div>
+                    <div class="image-wrapper">
+                        <img src="./images/eos-6.png" alt="Product">
+                        <div class="overlay-icons">
+                            <button class="btn btn-default" data-hover="🔍 Quick View"><span>Quick View</span></button>
+                            <button class="btn btn-primary" data-hover="🛒 Quick Shop"><span>Quick Shop</span></button>
+                        </div>
+                    </div>
+                    <div class="rating"><i class="glyphicon glyphicon-star"></i><i
+                            class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i
+                            class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i></div>
+                    <div class="title">Elegant Sofa</div>
+                    <div class="price">$36.00</div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-3 product-item" data-category="furniture">
+                <div class="product-grid">
+                    <div class="wishlist"><i class="glyphicon glyphicon-heart"></i></div>
+                    <div class="image-wrapper">
+                        <img src="./images/eos-7.png" alt="Product">
+                        <div class="overlay-icons">
+                            <button class="btn btn-default" data-hover="🔍 Quick View"><span>Quick View</span></button>
+                            <button class="btn btn-primary" data-hover="🛒 Quick Shop"><span>Quick Shop</span></button>
+                        </div>
+                    </div>
+                    <div class="rating"><i class="glyphicon glyphicon-star"></i><i
+                            class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i
+                            class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i></div>
+                    <div class="title">Elegant Sofa</div>
+                    <div class="price">$36.00</div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-3 product-item" data-category="furniture">
+                <div class="product-grid">
+                    <div class="wishlist"><i class="glyphicon glyphicon-heart"></i></div>
+                    <div class="image-wrapper">
+                        <img src="./images/eos-8.png" alt="Product">
+                        <div class="overlay-icons">
+                            <button class="btn btn-default" data-hover="🔍 Quick View"><span>Quick View</span></button>
+                            <button class="btn btn-primary" data-hover="🛒 Quick Shop"><span>Quick Shop</span></button>
+                        </div>
+                    </div>
+                    <div class="rating"><i class="glyphicon glyphicon-star"></i><i
+                            class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i
+                            class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i></div>
+                    <div class="title">Elegant Sofa</div>
+                    <div class="price">$36.00</div>
+                </div>
+            </div>
+            <!-- Repeat this block with different data-category values -->
+            <!-- For demo, copy the above block and change data-category + image + title -->
+        </div>
+
+        <!-- Pagination & View All -->
+        <div class="footer-row">
+            <nav>
+                <ul class="pagination">
+                    <li><a href="#"><i class="glyphicon glyphicon-chevron-left"></i></a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">...</a></li>
+                    <li><a href="#">28</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-chevron-right"></i></a></li>
+                </ul>
+            </nav>
+            <button class="btn btn-dark"><strong>View All</strong> <i
+                    class="glyphicon glyphicon-arrow-right"></i></button>
+        </div>
+    </section>
+
+    <!-- --------------------------------------- Deals ------------------------------------------------------ -->
+    <section class="container-fluid card-container">
+
+        <!-- Desktop View (>=768px): 2 top + 2 bottom -->
+        <div class="row desktop-view">
+            <div class="col-sm-6">
+                <div class="custom-card">
+                    <div class="card-text">
+                        <small>Subscribe To Our Newsletter</small>
+                        <h4>To Receive<br>Coupon Codes</h4>
+                        <a href="#">Subscribe Now!</a>
+                    </div>
+                    <div class="card-img">
+                        <img src="./images/o-1.png">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="custom-card">
+                    <div class="card-text">
+                        <small>Product Influencer Program</small>
+                        <h4>Join Us As An<br>Influencer</h4>
+                        <a href="#">Join Now!</a>
+                    </div>
+                    <div class="card-img">
+                        <img src="./images/o-3.png">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="custom-card">
+                    <div class="card-text">
+                        <small>To Become An Affiliate</small>
+                        <h4>Join Here To<br>Make Referral</h4>
+                        <a href="#">Join Now!</a>
+                    </div>
+                    <div class="card-img">
+                        <img src="./images/o-2.png">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="custom-card">
+                    <div class="card-text">
+                        <small>MMS/SMS Deals</small>
+                        <h4>Click Here To Get<br>Deals Via SMS</h4>
+                        <a href="#">Subscribe Now!</a>
+                    </div>
+                    <div class="card-img">
+                        <img src="./images/o-4.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile View (<768px): Scrollable 1 top + 1 bottom -->
+        <div class="mobile-view">
+            <div class="scroll-wrapper">
+                <div class="scroll-slide">
+                    <div class="custom-card">
+                        <div class="card-text">
+                            <small>Subscribe To Our Newsletter</small>
+                            <h4>To Receive<br>Coupon Codes</h4>
+                            <a href="#">Subscribe Now!</a>
+                        </div>
+                        <div class="card-img">
+                            <img src="https://picsum.photos/400/250?random=1">
+                        </div>
+                    </div>
+                    <div class="custom-card">
+                        <div class="card-text">
+                            <small>Product Influencer Program</small>
+                            <h4>Join Us As An<br>Influencer</h4>
+                            <a href="#">Join Now!</a>
+                        </div>
+                        <div class="card-img">
+                            <img src="https://picsum.photos/400/250?random=2">
+                        </div>
+                    </div>
+                </div>
+                <div class="scroll-slide">
+                    <div class="custom-card">
+                        <div class="card-text">
+                            <small>To Become An Affiliate</small>
+                            <h4>Join Here To<br>Make Referral</h4>
+                            <a href="#">Join Now!</a>
+                        </div>
+                        <div class="card-img">
+                            <img src="https://picsum.photos/400/250?random=3">
+                        </div>
+                    </div>
+                    <div class="custom-card">
+                        <div class="card-text">
+                            <small>MMS/SMS Deals</small>
+                            <h4>Click Here To Get<br>Deals Via SMS</h4>
+                            <a href="#">Subscribe Now!</a>
+                        </div>
+                        <div class="card-img">
+                            <img src="https://picsum.photos/400/250?random=4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ------------------------ testimonial-section ------------------------------------------------ -->
+    <section class="container-fluid" style="background-color: #000; padding: 50px 10px;">
+        <div class="testimonial-section">
+            <h2 class="text-center" style="margin-bottom: 30px;">What Our Customers Say</h2>
+
+            <div class="testimonial-track" id="testimonialSlider">
+                <!-- Card 1 -->
+                <div class="testimonial-card">
+                    <img src="./images/t-2.png" class="testimonial-image" alt="Customer">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <div class="testimonial-text">
+                            Amazing quality and excellent packaging. Highly recommend for anyone who values great
+                            products
+                            and services!
+                        </div>
+                        <div class="testimonial-name">Emma Lee</div>
+                        <div class="testimonial-role">Fashion Enthusiast</div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="testimonial-card">
+                    <img src="./images/t-1.png" class="testimonial-image" alt="Customer">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">★★★★☆</div>
+                        <div class="testimonial-text">
+                            The support team helped me choose the right product. Everything was smooth and well-managed.
+                            Thanks for a great experience.
+                        </div>
+                        <div class="testimonial-name">John Smith</div>
+                        <div class="testimonial-role">Frequent Shopper</div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="testimonial-card">
+                    <img src="./images/t-1.png" class="testimonial-image" alt="Customer">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <div class="testimonial-text">
+                            I loved the quick delivery and the product was just like described. Great shopping
+                            experience
+                            overall. Will definitely return!
+                        </div>
+                        <div class="testimonial-name">Jane Doe</div>
+                        <div class="testimonial-role">Verified Buyer</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slider Controls -->
+            <div class="slider-controls">
+                <button class="slider-btn left" onclick="scrollSlider(-1)">&#10094;</button>
+                <button class="slider-btn right" onclick="scrollSlider(1)">&#10095;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ------------------------------ videos ------------------------------------------------------- -->
+    <section class="container" style="margin: 40px auto;">
+        <div class="gallery-title">Explore The Video Gallery</div>
+
+        <div class="row">
+            <div class="col-sm-4 col-xs-6">
+                <div class="video-card">
+                    <video src="https://www.w3schools.com/html/mov_bbb.mp4" poster="./images/v1.png"></video>
+                    <div class="play-icon">▶</div>
+                    <div class="video-name">Reva Smith</div>
+                </div>
+            </div>
+            <div class="col-sm-4 col-xs-6">
+                <div class="video-card">
+                    <video src="https://www.w3schools.com/html/movie.mp4" poster="./images/v2.png"></video>
+                    <div class="play-icon">▶</div>
+                    <div class="video-name">John Smith</div>
+                </div>
+            </div>
+            <div class="col-sm-4 col-xs-6">
+                <div class="video-card">
+                    <video src="https://www.w3schools.com/html/mov_bbb.mp4" poster="./images/v3.png"></video>
+                    <div class="play-icon">▶</div>
+                    <div class="video-name">Reva Timpl</div>
+                </div>
+            </div>
+            <div class="col-sm-4 col-xs-6">
+                <div class="video-card">
+                    <video src="https://www.w3schools.com/html/movie.mp4" poster="./images/v4.png"></video>
+                    <div class="play-icon">▶</div>
+                    <div class="video-name">Ravi Jhonson</div>
+                </div>
+            </div>
+            <div class="col-sm-4 col-xs-6">
+                <div class="video-card">
+                    <video src="https://www.w3schools.com/html/mov_bbb.mp4" poster="./images/v5.png"></video>
+                    <div class="play-icon">▶</div>
+                    <div class="video-name">John Smith</div>
+                </div>
+            </div>
+            <div class="col-sm-4 col-xs-6">
+                <div class="video-card">
+                    <video src="https://www.w3schools.com/html/movie.mp4" poster="./images/v6.png"></video>
+                    <div class="play-icon">▶</div>
+                    <div class="video-name">John Smith</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- -------------------- meet section ----------------------------------------------- -->
+    <section class="container meet-section" style="margin: 60px auto;">
+        <div class="row no-gutter meet-flex">
+            <div class="col-sm-6 meet-text">
+                <h2>Book A Meet & Greet<br>With A Heavens Vault Product Specialist</h2>
+                <ul>
+                    <li>1 on 1 Live Shopping Assistance</li>
+                    <li>Product Recommendations, Insight, & Advice</li>
+                    <li>Live Call Agent Discounts & Bundles</li>
+                </ul>
+                <button class="meet-btn">
+                    Book 1:1 Product Sales Call <span class="arrow">→</span>
+                </button>
+            </div>
+            <div class="col-sm-6 meet-image">
+                <img src="./images/meet-1.png" alt="Meet Visual">
+            </div>
+        </div>
+    </section>
+
+    <!-- --------------------------------- feature ---------------------------------------------------------- -->
+    <section>
+        <div class="quote-section">
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+          <path
+            d="M24 10c-7.732 0-14 6.268-14 14v10h12v20h12V24c0-7.732-6.268-14-14-14zm30 0c-7.732 0-14 6.268-14 14v10h12v20h12V24c0-7.732-6.268-14-14-14z" />
+        </svg> -->
+            <div class="quote-text">
+                “We At Heavens Vault Pride Ourself With Being Able To Connect With Our Customers 24/7! You Are The
+                Quintessential
+                Component To Our Success And We Are Here To Service Your Product Orders At Hours Of The Day! Heavens
+                Vault Is
+                Always Open To You!”
+            </div>
+            <div class="quote-author">- Management</div>
+        </div>
+
+        <div class="container features-section">
+            <div class="row">
+                <div class="col-sm-3 col-xs-6 feature">
+                    <div class="feature-icon">
+                        <span class="glyphicon glyphicon-road"></span>
+                    </div>
+                    <h4>Free Shipping</h4>
+                    <p>For all Orders Over $100</p>
+                </div>
+                <div class="col-sm-3 col-xs-6 feature">
+                    <div class="feature-icon">
+                        <span class="glyphicon glyphicon-retweet"></span>
+                    </div>
+                    <h4>30 Days Returns</h4>
+                    <p>For an Exchange Product</p>
+                </div>
+                <div class="col-sm-3 col-xs-6 feature">
+                    <div class="feature-icon">
+                        <span class="glyphicon glyphicon-credit-card"></span>
+                    </div>
+                    <h4>Secured Payment</h4>
+                    <p>Payment Cards Accepted</p>
+                </div>
+                <div class="col-sm-3 col-xs-6 feature">
+                    <div class="feature-icon">
+                        <span class="glyphicon glyphicon-headphones"></span>
+                    </div>
+                    <h4>Support 24/7</h4>
+                    <p>Contact us Anytime</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------------------------- footer --------------------------------------- -->
+    <footer>
+        <div class="container">
+            <!-- Logo for small screens -->
+            <div class="row visible-xs">
+                <div class="col-xs-12 footer-logo">
+                    <h2 style="font-family: Georgia, serif;">Heaven’s Vault</h2>
+                </div>
+            </div>
+
+            <div class="row text-left footer-links-row">
+                <!-- Logo for md+ screens -->
+                <div class="col-sm-3 hidden-xs">
+                    <h2 style="font-family: Georgia, serif;">Heaven’s Vault</h2>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-sm-3 col-xs-4 footer-col">
+                    <h4><strong>Quick Links</strong></h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Core Values</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press Releases</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                        <li><a href="#">Sitemap</a></li>
+                    </ul>
+                </div>
+
+                <!-- Our Company -->
+                <div class="col-sm-3 col-xs-4 footer-col">
+                    <h4><strong>Our Company</strong></h4>
+                    <ul>
+                        <li><a href="#">Shopping App</a></li>
+                        <li><a href="#">Be An Affiliate</a></li>
+                        <li><a href="#">Newsletters</a></li>
+                        <li><a href="#">Influencer Programme</a></li>
+                        <li><a href="#">SMS/MMS</a></li>
+                    </ul>
+                </div>
+
+                <!-- Follow Us -->
+                <div class="col-sm-3 col-xs-4 footer-col">
+                    <h4><strong>Follow Us</strong></h4>
+                    <ul class="social-icons">
+                        <li><a href="#"><i class="fa fa-facebook"></i> <span
+                                    class="visible-xs-inline">Facebook</span></a></li>
+                        <li><a href="#"><i class="fa fa-instagram"></i> <span
+                                    class="visible-xs-inline">Instagram</span></a></li>
+                        <li><a href="#"><i class="fa fa-whatsapp"></i> <span
+                                    class="visible-xs-inline">WhatsApp</span></a></li>
+                        <li><a href="#"><i class="fa fa-music"></i> <span class="visible-xs-inline">TikTok</span></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-twitter"></i> <span class="visible-xs-inline">Twitter</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr>
+
+            <!-- Footer Bottom -->
+            <div class="row">
+                <div class="col-xs-12 text-center" style="font-size: 14px;">
+                    Copyright © Heaven’s Vault. All rights reserved. Design with <span style="color:red;">❤</span> by
+                    Draftss.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- jQuery & Bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Owl Carousel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <!-- ------------------------------------ CArd scroll ------------------------------------------- -->
+    <script>
+        $(document).ready(function () {
+            // Init custom slider (hero/banner cards)
+            $('.custom-slider-carousel').owlCarousel({
+                items: 3,
+                margin: 20,
+                loop: false,
+                nav: false,
+                dots: false,
+                smartSpeed: 600,
+                responsive: {
+                    0: { items: 1 },
+                    576: { items: 2 },
+                    768: { items: 3 }
+                }
+            });
+        });
+    </script>
+    <!-- ------------------------------------ Popular category ------------------------------------------- -->
+    <script>
+        $(document).ready(function () {
+            // Only initialize popular-carousel to avoid conflict
+            $('.popular-carousel').owlCarousel({
+                loop: false,
+                margin: 20,
+                responsiveClass: true,
+                nav: false,
+                dots: false,
+                smartSpeed: 600,
+                responsive: {
+                    0: { items: 3 },
+                    480: { items: 4 },
+                    768: { items: 4 },
+                    992: { items: 6 },
+                    1200: { items: 7 }
+                }
+            });
+
+            // Scroll animation trigger for this section only
+            function revealOnScroll() {
+                var sectionTop = $('#category-section').offset().top;
+                var scrollTop = $(window).scrollTop();
+                var windowHeight = $(window).height();
+
+                if (scrollTop + windowHeight > sectionTop + 100) {
+                    $('#category-section .category-item').each(function (i) {
+                        var item = $(this);
+                        setTimeout(function () {
+                            item.addClass('visible');
+                        }, i * 150);
+                    });
+                    $(window).off('scroll', revealOnScroll);
+                }
+            }
+
+            $(window).on('scroll', revealOnScroll);
+            revealOnScroll(); // Trigger if already in view
+        });
+    </script>
+
+    <!-- ------------------------- Explore our deals -------------------------------------- -->
+    <script>
+        $(document).ready(function () {
+            // On nav-tab click
+            $('.filter-scroll a').click(function (e) {
+                e.preventDefault();
+
+                // Set active tab
+                $('.filter-scroll li').removeClass('active');
+                $(this).parent().addClass('active');
+
+                var filter = $(this).attr('href').substring(1); // Get ID without '#'
+
+                if (filter === 'all') {
+                    $('.product-item').show();
+                } else {
+                    $('.product-item').hide();
+                    $('.product-item[data-category="' + filter + '"]').show();
+                }
+            });
+        });
+    </script>
+
+    <!-- ------------------------------ Testimonial -------------------------------------- -->
+    <script>
+        function scrollSlider(direction) {
+            const container = document.getElementById('testimonialSlider');
+            const card = container.querySelector('.testimonial-card');
+            const scrollAmount = card.offsetWidth + 30;
+            container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+        }
+    </script>
+
+    <!-- --------------------------------- video script ------------------------------------------ -->
+    <script>
+        document.querySelectorAll('.video-card').forEach(function (card) {
+            var video = card.querySelector('video');
+            var icon = card.querySelector('.play-icon');
+
+            icon.addEventListener('click', function () {
+                if (video.paused) {
+                    video.play();
+                    icon.textContent = '❚❚';
+                } else {
+                    video.pause();
+                    icon.textContent = '▶';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
